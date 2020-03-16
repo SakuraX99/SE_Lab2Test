@@ -51,10 +51,10 @@ export default {
   },
   methods: {
     login () {
-      this.$axios.post('/login', {
-        username: this.loginForm.username,
-        password: this.loginForm.password
-      })
+      this.$axios.post('/login'
+        ,{username: this.loginForm.username,
+        password: this.loginForm.password}
+      )
         .then(resp => {
           if (resp.status === 200 && resp.data.hasOwnProperty("token")) {
             this.$store.commit('login', resp.data)

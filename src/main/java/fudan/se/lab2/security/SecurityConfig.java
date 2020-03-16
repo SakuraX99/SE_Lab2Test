@@ -47,7 +47,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/welcome").permitAll()
+                .antMatchers("/register", "/login", "/welcome").permitAll()//任何用户都可以访问以"/register","/login", 或者 "/welcome"开头的URL
+                //此处可以设置其他权限
                 .anyRequest().authenticated();
 
 //      Here we use JWT(Json Web Token) to authenticate the user.
