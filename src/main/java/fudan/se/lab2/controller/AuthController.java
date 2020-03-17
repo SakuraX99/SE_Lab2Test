@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * @author LBW
@@ -23,6 +24,7 @@ public class AuthController {
     private AuthService authService;
 
     Logger logger = LoggerFactory.getLogger(AuthController.class);
+
 
     @Autowired
     public AuthController(AuthService authService) {

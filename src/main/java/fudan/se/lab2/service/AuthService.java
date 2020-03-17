@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.regex.Pattern;
 
 /**
@@ -26,6 +27,8 @@ import java.util.regex.Pattern;
  */
 @Service
 public class AuthService {
+    private final AtomicLong counterforau = new AtomicLong();
+    private final AtomicLong counterforusr = new AtomicLong();
     private UserRepository userRepository;
     private AuthorityRepository authorityRepository;
     private final String patternForUsrname = "^[a-zA-Z0-9]{6,20}$";//用户名暂定规则： 6-20个个字符，由大写字母，小写字母和数字构成
@@ -55,16 +58,12 @@ public class AuthService {
                         Set<Authority> Autorities = new HashSet<>();
                         for (String x : authorities
                         ) {
-                            Autorities.add(new Authority(x));
+                            long id = counterforau.incrementAndGet();
+                            Autorities.add(new Authority(x,id));
+                            authorityRepository.save(new Authority(x,id));
                         }//字符串集合对象转化为Authority集合对象
                         User usr = new User(Usrname, Pasw, Fullname, Autorities);//该user构造完成
                         userRepository.save(usr);//添加用户
-                        for (String x : authorities
-                        ) {
-                            Authority thisobj = authorityRepository.findByAuthority(x);
-                            thisobj.addUser(usr);//逐个Authority对象添加user
-                            authorityRepository.save(thisobj);//save修改过的Authority
-                        }
                         return usr;//返回User对象
                     } else {
                         throw new FullNameillegalException(Fullname);
