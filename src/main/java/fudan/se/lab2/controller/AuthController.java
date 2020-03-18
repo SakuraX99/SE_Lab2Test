@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * @author LBW
@@ -25,7 +24,6 @@ public class AuthController {
 
     Logger logger = LoggerFactory.getLogger(AuthController.class);
 
-
     @Autowired
     public AuthController(AuthService authService) {
         this.authService = authService;
@@ -33,6 +31,7 @@ public class AuthController {
 
 
     @PostMapping("/register")
+    @CrossOrigin("http://localhost:8080")
     public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
         logger.debug("RegistrationForm: " + request.toString());
 
@@ -40,6 +39,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
+    @CrossOrigin("http://localhost:80")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
         logger.debug("LoginForm: " + request.toString());
 
@@ -50,6 +50,7 @@ public class AuthController {
      * This is a function to test your connectivity. (健康测试时，可能会用到它）.
      */
     @GetMapping("/welcome")
+    @CrossOrigin("http://localhost:8080")
     public ResponseEntity<?> welcome() {
         Map<String, String> response = new HashMap<>();
         String message = "Welcome to 2020 Software Engineering Lab2. ";

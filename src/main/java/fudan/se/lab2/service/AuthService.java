@@ -2,6 +2,7 @@ package fudan.se.lab2.service;
 
 import fudan.se.lab2.domain.Authority;
 import fudan.se.lab2.exception.UsernameHasBeenRegisteredException;
+import fudan.se.lab2.security.jwt.JwtConfigProperties;
 import fudan.se.lab2.security.jwt.JwtTokenUtil;
 import fudan.se.lab2.domain.User;
 import fudan.se.lab2.repository.AuthorityRepository;
@@ -12,8 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -27,8 +31,10 @@ import java.util.regex.Pattern;
  */
 @Service
 public class AuthService {
+    private JwtConfigProperties properties = new JwtConfigProperties();
+    private JwtTokenUtil jwtutil = new JwtTokenUtil(properties);
     private final AtomicLong counterforau = new AtomicLong();
-    private final AtomicLong counterforusr = new AtomicLong();
+    private static SampleManager am = new SampleManager();
     private UserRepository userRepository;
     private AuthorityRepository authorityRepository;
     private final String patternForUsrname = "^[a-zA-Z0-9]{6,20}$";//用户名暂定规则： 6-20个个字符，由大写字母，小写字母和数字构成
@@ -62,7 +68,7 @@ public class AuthService {
                             Autorities.add(new Authority(x,id));
                             authorityRepository.save(new Authority(x,id));
                         }//字符串集合对象转化为Authority集合对象
-                        User usr = new User(Usrname, Pasw, Fullname, Autorities);//该user构造完成
+                        User usr = new User(Usrname, BCrypt.hashpw(Pasw,BCrypt.gensalt()), Fullname, Autorities);//该user构造完成
                         userRepository.save(usr);//添加用户
                         return usr;//返回User对象
                     } else {
@@ -80,23 +86,25 @@ public class AuthService {
 
 
     public String login(String username, String password) {
-        if (Pattern.matches(patternForUsrname, username)) {//用户名是否符合注册的基本要求
-            User searchusr = userRepository.findByUsername(username);//数据库查找user
-            if (searchusr == null) {//没有找到该user
-                return null;
-            }
-            String pasw = searchusr.getPassword();//提取数据库密码
-            if (password.equals(pasw)) {//密码校验
-                //密码校验正确进行权限检查
-                //目前login似乎还不需要进行权限检查
-                return "Login Successfully!";
-            } else {
-                return "Wrong Passowrd or User Name!";
-            }
-        } else {
+        if (!Pattern.matches(patternForUsrname, username)) {//用户名是否符合基本要求
             throw new IllegalUserNameException();
         }
+        am.setUserRepository(userRepository);
+        try {
+            Authentication request = new UsernamePasswordAuthenticationToken(username, password);
+            Authentication result = am.authenticate(request);//校验
+            SecurityContextHolder.getContext().setAuthentication(result);
+        } catch(AuthenticationException e) {
+            return ("Authentication failed: " + e.getMessage());
+        }
+
+        return "Successfully authenticated. Security context contains: " + SecurityContextHolder.getContext().getAuthentication() + "\n token : "+jwtutil.generateToken(userRepository.findByUsername(username));//加入了token
         // TODO: Implement the function.
+    }
+
+    public static void main(String[] args) {
+        String pas = "snaks231CSMZK";
+//        this.passwordEncoder.encode();
     }
 
 

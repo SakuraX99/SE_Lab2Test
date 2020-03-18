@@ -1,7 +1,9 @@
 package fudan.se.lab2.exception;
 
-public class IllegalUserNameException extends RuntimeException {
-    private static final long serialVersionUID = -6074753940710869977L;
+import org.springframework.security.core.AuthenticationException;
+
+public class IllegalUserNameException extends AuthenticationException {
+    private static final long serialVersionUID = -6074753940710869976L;
 
     public IllegalUserNameException() {
         super("User Name is illegal!");

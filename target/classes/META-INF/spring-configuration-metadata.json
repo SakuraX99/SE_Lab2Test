@@ -10,13 +10,14 @@
     {
       "name": "jwt.token.secret",
       "type": "java.lang.String",
-      "sourceType": "fudan.se.lab2.security.jwt.JwtConfigProperties"
+      "sourceType": "fudan.se.lab2.security.jwt.JwtConfigProperties",
+      "defaultValue": "FudanSE2020"
     },
     {
       "name": "jwt.token.validity",
       "type": "java.lang.Integer",
       "sourceType": "fudan.se.lab2.security.jwt.JwtConfigProperties",
-      "defaultValue": 0
+      "defaultValue": 1800000
     }
   ],
   "hints": []

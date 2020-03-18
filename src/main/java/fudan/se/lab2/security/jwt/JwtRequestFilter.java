@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
@@ -45,10 +46,10 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             username = jwtUtil.getUsernameFromToken(jwt);
         }
 
-
+        logger.info("checking authentication user " + username);
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
-            JwtUser userDetails = this.userDetailsService.loadUserByUsername(username);
+            UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
 
             if (jwtUtil.validateToken(jwt, userDetails)) {
 
@@ -56,12 +57,10 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                         userDetails, null, userDetails.getAuthorities());
                 usernamePasswordAuthenticationToken
                         .setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                logger.info("authenticated user " + username + ", setting security context");
                 SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
             }
         }//尝试写的一个filter
-
         filterChain.doFilter(request, response);
-
-//        filterChain.doFilter(request, response);
     }
 }

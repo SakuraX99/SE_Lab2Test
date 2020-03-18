@@ -16,6 +16,12 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 //TODO: If you encounter some Cross-Domain problems（跨域问题）, Maybe you can do something here.
+                registry.addMapping("/**")
+                        .allowedOrigins("*")
+                        .allowedMethods("POST", "GET", "PUT", "OPTIONS", "DELETE")
+                        .allowCredentials(true)
+                        .allowedHeaders("*")
+                        .maxAge(3600);
             }
         };
     }
