@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Lab2个人文档_TianyiZhang_17307110223.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="lab2-%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE%E6%96%87%E6%A1%A3">Lab2 个人项目文档</h1>
+<h3 id="name-tianyi-zhang-id-17307110223">Name: Tianyi Zhang       ID: 17307110223</h3>
+<h2 id="1-%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E8%B4%9F%E8%B4%A3%E7%9A%84%E5%86%85%E5%AE%B9">1. 在项目中负责的内容</h2>
+<ul>
+<li>编写项目的需求规划（Devcloud）</li>
+<li>Web后端代码模板的研究（认知过程）</li>
+<li>根据项目需求编写后端代码</li>
+<li>部分与前端的对接工作</li>
+<li>后端功能的部署功能测试</li>
+</ul>
+<hr>
+<h2 id="2-%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%80%BB%E8%BE%91%E6%B5%81%E7%A8%8B">2. 项目开发的基本逻辑流程</h2>
+<ul>
+<li><em><strong>对于Spring框架的理解和研究，由于之前没有接触过这方面的内容，前两天对于Spring框架的运作模式进行了探索，详见附件Lab2_Backend相关开发文档</strong></em></li>
+<li><em><strong>本项目使用的是MVC设计模式，经过学习了解，MVC设计模式是使用MVC（Model View Controller 模型-视图-控制器）设计创建Web应用程序的模式</strong></em>
+<ul>
+<li>Model（模型）是应用程序中用于处理应用程序数据逻辑的部分，通常模型对象负责在数据库中存取数据</li>
+<li>View（视图）是应用程序中处理数据显示的部分，通常视图是依据模型数据创建的</li>
+<li>Controller（控制器）是应用程序中处理用户交互的部分，通常控制器负责从视图读取数据，控制用户输入，并向模型发送数据</li>
+<li>本Web项目由于前后端分离，主要包含了Model和Controller的组件</li>
+</ul>
+</li>
+<li><em><strong>项目的开发需求分析，要实现的部分：</strong></em>
+<ul>
+<li>编写与需求相关的User、Authority、Meeting对象的类和请求接收request类，使Request能在IOC容器中获得前端发来的数据并顺利封装</li>
+<li>编写Register、Login、Holdmeeting方法</li>
+<li>编写在上述方法中需要用到的抛出异常</li>
+<li>编写Json Web Token的令牌过滤检测过程，并在Login中颁布限时令牌</li>
+<li>编写Spring Security中的安全配置以及相关配合JwtFilter的实现</li>
+</ul>
+</li>
+<li><em><strong>基于项目给出的SpringMVC模板进行开发编写</strong></em></li>
+</ul>
+<hr>
+<h2 id="3%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E5%85%B7%E4%BD%93%E5%86%85%E5%AE%B9">3.项目开发具体内容</h2>
+<ul>
+<li><em><strong>本项目的Spring框架运行流程</strong></em><img src="User Guide.png"></li>
+<li><em><strong>方法实现细节</strong></em>
+<ul>
+<li>拦截过滤器（Filter）
+<ul>
+<li>修改Security配置中对于不同访问路径的限制，暂时对/register和/login不作限制，其他诸如/holdmeeting的请求需要经过JwtFilter的过滤检查操作</li>
+<li>每次login中使用JwtTokenUtil中提供的方法使用User实例生成Token令牌写入Response中</li>
+<li>在JwtRequestFilter（Spring流程进行自动实例化）的doFilterInternal中先提取Token利用相关方法提取Token中信息比对判断令牌是否有效并对有效用户予以放行</li>
+<li>每次生成的Token对象会被封装进Json格式的response对象中</li>
+</ul>
+</li>
+<li>控制器（Controller）
+<ul>
+<li>在AuthController中编写register、login、holdmeeting方法使用JPA注解获取IOC容器中封装好的Request对象并导入相应的处理流程</li>
+<li>在package service中增加LoginService、RegisterService、HoldmeetingService对象封装相应请求的处理方法
+<ul>
+<li>RegisterService中包含了对于RegisterRegister对象中数据合法性的校验（InformationCheck）、程序与数据库的交互以及生成完毕的User对象的返回（Register）</li>
+<li>LoginService的login方法中包含了login流程的密码转码校验（调用SampleManager的authenticate方法并查询H2数据库）和token生成，最后会返回验证成功的相应response对象（附带token）</li>
+<li>HoldmeetingService中的holdmeeting完成了会议名简称的重复性校验和meeting对象的构建并封装进response对象进行回复</li>
+</ul>
+</li>
+<li>扩充Exception中的异常类型使之能处理Service中可能出现的各种异常</li>
+</ul>
+</li>
+<li>跨域设置（CorsConfig），目前把跨域设置设置为&quot;*&quot;,使公网域名可以访问</li>
+<li>数据格式规范参见小组统一的&quot;前后端接口参考文档&quot;该部分以及前后端协调主要由宋子阳同学负责</li>
+</ul>
+</li>
+</ul>
+<h2 id="4%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E7%9A%84%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93%E5%92%8C%E6%94%B6%E8%8E%B7">4.项目开发的经验总结和收获</h2>
+<ul>
+<li>了解学习不熟悉的开发框架需要阅读官方文档配合QuickStart等项目进行快速上手，最好尽可能多的了解框架的运行原理</li>
+<li>代码编写需要定义清晰模块化逻辑缜密</li>
+<li>了解了MVC设计模式，认识到了设计模式在软件开发中扮演的角色</li>
+<li>对于关系型数据库中的一对多、多对多的关系有了初步认识</li>
+<li>了解了Json Web Token的令牌细节以及保存状态的方式</li>
+<li>团队配合沟通需要简洁高效最好通过文档</li>
+</ul>
+<h2 id="5%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E7%9A%84%E5%8F%8D%E6%80%9D">5.项目开发的反思</h2>
+<ul>
+<li>代码能力需要加强，方法的传参方式需要更加考究，条件判断方式需要使用代价更小的方式</li>
+<li>异常抛出需要进行统一规划，Service返回值需要进行统一</li>
+<li>对于数据库了解过少，需要更多学习数据库相关理论知识</li>
+<li>JPA注解在开发中能发挥重要作用，需要进一步学习了解</li>
+<li>团队开发的相关规范要尽早确定避免后期麻烦</li>
+<li>团队开发需要多相互学习请教</li>
+</ul>
+
+</body>
+</html>

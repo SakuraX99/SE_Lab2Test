@@ -67,6 +67,19 @@ public class JwtTokenUtil implements Serializable {
         final Date expiration = getExpirationDateFromToken(jwtToken);
         return expiration.before(new Date());
     }
-
+//
+//    public static void main(String[] args) {
+//        JwtConfigProperties d = new JwtConfigProperties();
+//        d.setValidity(18000000);
+//        String jwt = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBS0ciLCJpYXQiOjE1ODQ2MTc3NzMsImV4cCI6MTU4NDYxOTU3M30.FNE2w8pGBzqeC2HYEKPOOcZqrFVErYaJ8V1dW6D15eojCKym26Cah9K2iIe3AKuS3tSjCKDfihr9-eGZAQOY2g";
+//        JwtTokenUtil f = new JwtTokenUtil(d);
+//        Date x = f.getExpirationDateFromToken(jwt);
+//        System.out.println(x);
+//        Date y = new Date();
+//        System.out.println(y);
+//        System.out.println(x.before(y));
+//        System.out.println(f.getUsernameFromToken(jwt));
+//    }
+//
 
 }

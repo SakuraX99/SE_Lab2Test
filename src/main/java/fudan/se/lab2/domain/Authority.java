@@ -21,7 +21,7 @@ public class Authority implements GrantedAuthority {
     @Column(unique = true)
     private String authority;
 
-    @ManyToMany(mappedBy = "authorities")
+    @ManyToMany(mappedBy = "authorities",fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<User> users;
 

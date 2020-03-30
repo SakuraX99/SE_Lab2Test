@@ -1,5 +1,6 @@
 package fudan.se.lab2.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,19 +22,27 @@ public class User implements UserDetails {
 
     @Column(unique = true)
     private String username;
-
     private String password;
-    private String fullname;
+    private String email;
+    private String institude;
+    private String region;
 
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Set<Authority> authorities = new HashSet<>();
 
+    @ManyToMany(mappedBy = "users")
+    @JsonIgnore
+    private Set<Meeting> meetings;
+
 
     public User() {}
-    public User(String username, String password, String fullname, Set<Authority> authorities) {
+
+    public User(String username, String password, String email, String institude, String region, Set<Authority> authorities) {
         this.username = username;
         this.password= password;
-        this.fullname = fullname;
+        this.email = email;
+        this.institude = institude;
+        this.region = region;
         this.authorities = authorities;
     }
 
@@ -72,6 +81,30 @@ public class User implements UserDetails {
         return true;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getInstitude() {
+        return institude;
+    }
+
+    public void setInstitude(String institude) {
+        this.institude = institude;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
     public Long getId() {
         return id;
     }
@@ -86,14 +119,6 @@ public class User implements UserDetails {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getFullname() {
-        return fullname;
-    }
-
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
     }
 
     public void setAuthorities(Set<Authority> authorities) {

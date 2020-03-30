@@ -1,5 +1,6 @@
 package fudan.se.lab2.controller;
 
+import fudan.se.lab2.controller.request.HoldmeetingRequest;
 import fudan.se.lab2.service.AuthService;
 import fudan.se.lab2.service.JwtUserDetailsService;
 import fudan.se.lab2.controller.request.LoginRequest;
@@ -31,7 +32,7 @@ public class AuthController {
 
 
     @PostMapping("/register")
-    @CrossOrigin("http://localhost:8080")
+    @CrossOrigin("*")
     public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
         logger.debug("RegistrationForm: " + request.toString());
 
@@ -39,18 +40,25 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    @CrossOrigin("http://localhost:80")
+    @CrossOrigin("*")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
         logger.debug("LoginForm: " + request.toString());
 
         return ResponseEntity.ok(authService.login(request.getUsername(), request.getPassword()));
     }
 
+    @PostMapping("/holdmeeting")
+    @CrossOrigin("*")
+    public ResponseEntity<?> holdmeeting(@RequestBody HoldmeetingRequest request){
+        logger.debug("Holdmeeting: " + request.toString());
+        return ResponseEntity.ok(authService.holdmeeting(request));
+    }
+
     /**
      * This is a function to test your connectivity. (健康测试时，可能会用到它）.
      */
     @GetMapping("/welcome")
-    @CrossOrigin("http://localhost:8080")
+    @CrossOrigin("*")
     public ResponseEntity<?> welcome() {
         Map<String, String> response = new HashMap<>();
         String message = "Welcome to 2020 Software Engineering Lab2. ";

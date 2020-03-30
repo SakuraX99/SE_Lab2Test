@@ -3,6 +3,7 @@ package fudan.se.lab2;
 import fudan.se.lab2.domain.Authority;
 import fudan.se.lab2.domain.User;
 import fudan.se.lab2.repository.AuthorityRepository;
+import fudan.se.lab2.repository.MeetingRepository;
 import fudan.se.lab2.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -33,7 +34,7 @@ public class Lab2Application {
      * You can change it as you like.
      */
     @Bean
-    public CommandLineRunner dataLoader(UserRepository userRepository, AuthorityRepository authorityRepository, PasswordEncoder passwordEncoder) {
+    public CommandLineRunner dataLoader(UserRepository userRepository, AuthorityRepository authorityRepository, MeetingRepository meetingRepository, PasswordEncoder passwordEncoder) {
         return new CommandLineRunner() {
             @Override
             public void run(String... args) throws Exception {
@@ -47,7 +48,9 @@ public class Lab2Application {
                     User admin = new User(
                             "admin",
                             passwordEncoder.encode("password"),
-                            "libowen",
+                            "libowen@fudan.edu.cn",
+                            "Fudan University",
+                            "ShangHai China",
                             new HashSet<>(Collections.singletonList(adminAuthority))
                     );
                     userRepository.save(admin);

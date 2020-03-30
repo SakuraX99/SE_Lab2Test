@@ -31,12 +31,10 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     @Autowired
     private JwtUserDetailsService userDetailsService;
 
-    @Autowired
-    private JwtTokenUtil jwtUtil;
-
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         // TODO: Implement the filter.
+        JwtTokenUtil jwtUtil = new JwtTokenUtil(new JwtConfigProperties());
         final String authorizationHeader = request.getHeader("Authorization");
         String username = null;
         String jwt = null;
@@ -63,4 +61,5 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         }//尝试写的一个filter
         filterChain.doFilter(request, response);
     }
+
 }
